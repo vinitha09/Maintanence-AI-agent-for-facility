@@ -1,0 +1,154 @@
+
+.manuals-page {
+  min-height: 0;
+  padding: 0 0 24px;
+  box-sizing: border-box;
+  background: transparent;
+  color: #263445;
+}
+
+.manuals-page .page-heading {
+  margin-bottom: 27px;
+  padding-bottom: 21px;
+  border-bottom: 1px solid var(--border);
+}
+
+.manuals-page > h1 {
+  margin: 5px 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  letter-spacing: -0.35px;
+}
+
+.manuals-description {
+  margin: 0 0 30px;
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.manuals-selector,
+.manuals-list {
+  padding: 24px;
+  margin-bottom: 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgb(28 39 52 / 3%);
+}
+
+.manuals-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.manuals-selector label {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.manuals-selector select {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px;
+  border: 1px solid #dcd9d1;
+  border-radius: 8px;
+  background: white;
+  color: #172033;
+  font: inherit;
+  font-size: 13px;
+}
+
+.manuals-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.manuals-list-heading h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.manuals-list-heading span {
+  color: #718096;
+  font-size: 12px;
+}
+
+.manuals-empty {
+  padding: 32px 12px;
+  border: 1px dashed #dce3ed;
+  border-radius: 10px;
+  color: #718096;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.manual-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 0;
+  border-top: 1px solid #edf0f5;
+}
+
+.manual-file-icon {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #fff0ef;
+  color: #c43f3f;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.manual-file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.manual-file-info h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.manual-file-info p {
+  margin: 0;
+  color: #718096;
+  font-size: 12px;
+}
+
+.manual-open-button {
+  padding: 10px 13px;
+  border: 1px solid #d9d7d0;
+  border-radius: 8px;
+  color: #465c72;
+  background: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.manual-open-button:hover {
+  background: #f4f3ef;
+}
+
+@media (max-width: 550px) {
+  .manual-item {
+    flex-wrap: wrap;
+  }
+
+  .manual-open-button {
+    margin-left: 60px;
+  }
+}
