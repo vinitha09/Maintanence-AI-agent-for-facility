@@ -1,0 +1,261 @@
+.hierarchy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.hierarchy-form {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 22px;
+}
+
+.hierarchy-form h2,
+.hierarchy-overview h2 {
+  margin: 0;
+}
+
+.hierarchy-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.hierarchy-form input,
+.hierarchy-form select,
+.hierarchy-form textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid #cbd4e0;
+  border-radius: 7px;
+  font: inherit;
+}
+
+.hierarchy-form button {
+  min-height: 40px;
+}
+
+.hierarchy-overview {
+  margin-top: 20px;
+  padding: 22px;
+}
+
+.organization-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.organization-flow-group {
+  min-width: 220px;
+}
+
+.organization-flow-node,
+.facility-flow-node {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  width: fit-content;
+  min-width: 220px;
+  padding: 14px 18px;
+  border: 1px solid #c9d6e2;
+  border-radius: 9px;
+  background: #f3f7fa;
+  color: #263445;
+  font: inherit;
+  text-align: left;
+}
+
+button.organization-flow-node {
+  cursor: pointer;
+}
+
+button.organization-flow-node:hover,
+.organization-flow-group.selected .organization-flow-node {
+  border-color: #718ba0;
+  background: #eaf1f6;
+}
+
+.facility-flow-node::before {
+  position: absolute;
+  top: 22px;
+  left: -19px;
+  width: 18px;
+  height: 2px;
+  background: #d7e0e8;
+  content: "";
+}
+
+.organization-flow-toggle {
+  align-self: center;
+  margin-left: auto;
+  color: #526b83;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.organization-flow-node > span,
+.facility-flow-node > span {
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.facility-flow-list {
+  display: grid;
+  gap: 18px;
+  margin: 14px 0 0;
+}
+
+.organization-flow-details {
+  width: min(100%, 1050px);
+  margin-top: 14px;
+}
+
+.facility-flow-card {
+  position: relative;
+  padding: 0 0 0 22px;
+  border-left: 2px solid #d7e0e8;
+}
+
+.facility-flow-node {
+  min-width: 190px;
+  background: #fff;
+}
+
+.facility-flow-branches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0 0 10px;
+}
+
+.hierarchy-branch {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #e0e6ec;
+  border-radius: 9px;
+  background: #fbfcfd;
+}
+
+.hierarchy-branch h3 {
+  margin: 0;
+  color: #40586f;
+  font-size: 13px;
+}
+
+.hierarchy-tree,
+.hierarchy-tree ul {
+  margin: 12px 0 0;
+  padding-left: 19px;
+  list-style: none;
+}
+
+.hierarchy-tree li {
+  position: relative;
+  padding: 0 0 12px 17px;
+  border-left: 1px solid #cbd6df;
+}
+
+.hierarchy-tree li:last-child {
+  border-left-color: transparent;
+}
+
+.hierarchy-tree li::before {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 16px;
+  border-top: 1px solid #cbd6df;
+  content: "";
+}
+
+.hierarchy-node {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 145px;
+  padding: 8px 11px;
+  border: 1px solid #dce4eb;
+  border-radius: 7px;
+  background: #fff;
+  color: #344054;
+  font-size: 12px;
+}
+
+.hierarchy-node-type {
+  color: #718096;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.hierarchy-machine-list {
+  display: grid;
+  gap: 5px;
+  margin: 7px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hierarchy-machine-list li {
+  width: fit-content;
+  padding: 6px 9px;
+  border: 1px solid #d7e8df;
+  border-radius: 6px;
+  background: #f1f8f4;
+  color: #35624a;
+  font-size: 11px;
+}
+
+.hierarchy-machine-list li::before {
+  display: none;
+}
+
+.hierarchy-empty {
+  margin: 12px 0 0;
+  color: #718096;
+  font-size: 12px;
+}
+
+@media (max-width: 720px) {
+  .facility-flow-branches {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hierarchy-overview {
+    padding: 16px;
+  }
+
+  .organization-flow-group {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .organization-flow-node,
+  .facility-flow-node {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .facility-flow-card {
+    padding-left: 12px;
+  }
+
+  .facility-flow-branches {
+    margin-left: 0;
+  }
+
+  .hierarchy-tree,
+  .hierarchy-tree ul {
+    padding-left: 10px;
+  }
+}

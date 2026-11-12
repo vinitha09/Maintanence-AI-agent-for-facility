@@ -1,0 +1,77 @@
+.machines-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.machines-heading button,
+.machine-edit-actions button,
+.machine-row button {
+  min-height: 38px;
+  padding: 8px 14px;
+}
+
+.machine-edit-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 22px;
+}
+
+.machine-edit-form h2,
+.machine-edit-description,
+.machine-edit-actions {
+  grid-column: 1 / -1;
+}
+
+.machine-edit-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.machine-edit-form input,
+.machine-edit-form select,
+.machine-edit-form textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid #cbd4e0;
+  border-radius: 7px;
+  font: inherit;
+}
+
+.machine-edit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.machine-directory {
+  padding: 8px 22px;
+}
+
+.machine-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e8edf3;
+}
+
+.machine-row > div {
+  flex: 1;
+}
+
+.machine-row p,
+.machine-row small {
+  margin: 4px 0 0;
+}
+
+@media (max-width: 600px) {
+  .machines-heading,
+  .machine-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
