@@ -35,7 +35,7 @@ from backend.app.services.email import (
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/admin", tags=["administrator"])
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173").rstrip("/")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://maintanence-ai-agent-for-facility.pages.dev").rstrip("/")
 
 
 @router.get("/users", response_model=list[UserRead])

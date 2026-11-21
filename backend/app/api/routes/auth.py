@@ -54,7 +54,7 @@ from backend.app.services.email import (
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/auth", tags=["authentication"])
 COOKIE_NAME = SESSION_COOKIE_NAME
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173").rstrip("/")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://maintanence-ai-agent-for-facility.pages.dev").rstrip("/")
 
 
 def _set_session_cookie(response: Response, user: User) -> None:
