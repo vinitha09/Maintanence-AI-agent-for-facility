@@ -196,7 +196,7 @@ def search_manuals(
                 matches=context_matches,
             )
         except AnswerGenerationError as error:
-            logger.exception("Could not generate an answer with Ollama.")
+            logger.exception("Could not generate an answer with Gemini.")
             raise HTTPException(
                 status_code=502,
                 detail=str(error),
@@ -242,12 +242,12 @@ def stream_manual_search(
             first_token = next(tokens, None)
             if first_token is None:
                 raise AnswerGenerationError(
-                    "Ollama completed without generating an answer."
+                    "Gemini completed without generating an answer."
                 )
         except AnswerGenerationError as error:
             if upstream is not None:
                 upstream.close()
-            logger.exception("Could not start the Ollama answer stream.")
+            logger.exception("Could not start the Gemini answer stream.")
             raise HTTPException(status_code=502, detail=str(error)) from error
     else:
         tokens = iter(())
@@ -264,7 +264,7 @@ def stream_manual_search(
             yield _sse_event("sources", {"sources": sources})
             yield _sse_event("done", {})
         except AnswerGenerationError:
-            logger.exception("Ollama answer stream failed.")
+            logger.exception("Gemini answer stream failed.")
             yield _sse_event(
                 "error",
                 {"detail": "The AI answer stream was interrupted. Please retry."},

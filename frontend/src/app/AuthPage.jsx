@@ -117,7 +117,7 @@ export default function AuthPage({ onAuthenticated, notice }) {
       } else if (page === "user-invitation") {
         const result = await postJson(
           "/auth/user-invitations/accept",
-          { token, email, name: name.trim(), password }
+          { token, email, name: email.trim().split("@", 1)[0], password }
         );
         onAuthenticated(result.user);
       }
@@ -186,13 +186,12 @@ export default function AuthPage({ onAuthenticated, notice }) {
 
         {needsForm && (
           <form className="auth-form" onSubmit={handleSubmit}>
-            {["register", "admin-registration", "user-invitation"].includes(page) && (
+            {["register", "admin-registration"].includes(page) && (
               <label>
                 Name
                 <input
                   autoComplete="name"
                   maxLength={150}
-                  required={page !== "user-invitation"}
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                 />
@@ -200,7 +199,7 @@ export default function AuthPage({ onAuthenticated, notice }) {
             )}
             {["login", "register", "forgot", "user-invitation"].includes(page) && (
               <label>
-                {page === "user-invitation" ? "Invited email address" : "Email"}
+                Email
                 <input
                   autoComplete="email"
                   type="email"
@@ -271,16 +270,20 @@ export default function AuthPage({ onAuthenticated, notice }) {
         {page === "login" && (
           <div className="auth-links">
             {role === "user" && (
-              <button type="button" onClick={() => showPage("register")}>
-                Create an account
+              <>
+                <button type="button" onClick={() => showPage("register")}>
+                  Create an account
+                </button>
+                <button type="button" onClick={() => showPage("user-invitation")}>
+                  Accept a user invitation
+                </button>
+              </>
+            )}
+            {role === "admin" && (
+              <button type="button" onClick={() => showPage("admin-registration")}>
+                Administrator registration (invitation required)
               </button>
             )}
-            <button type="button" onClick={() => showPage("user-invitation")}>
-              Accept a user invitation
-            </button>
-            <button type="button" onClick={() => showPage("admin-registration")}>
-              Administrator registration (invitation required)
-            </button>
             <button type="button" onClick={() => showPage("forgot")}>
               Forgot password?
             </button>

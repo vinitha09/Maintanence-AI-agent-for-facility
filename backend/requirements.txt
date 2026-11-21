@@ -1,13 +1,13 @@
-fastAPI[Standard]
+fastapi[standard]
 argon2-cffi
 email-validator
 PyJWT
-pg8000
+psycopg[binary]
 pgvector
-pymupdf
+PyMuPDF
 python-dotenv
 sentence-transformers
-sqlalchemy
+SQLAlchemy
 sqlmodel
 docker
 uvicorn

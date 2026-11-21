@@ -1,0 +1,680 @@
+:root {
+  color-scheme: dark;
+  --navy: #0c1419;
+  --navy-light: #15232b;
+  --blue: #70cbd3;
+  --blue-hover: #91e0e5;
+  --text: #e4edf0;
+  --muted: #9aabb2;
+  --border: #2a3a42;
+  --surface: #121e24;
+  --page-bg: #0a1115;
+}
+
+body {
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 72% 8%, rgb(49 133 145 / 12%), transparent 34rem),
+    radial-gradient(ellipse at 8% 82%, rgb(179 120 47 / 7%), transparent 28rem),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgb(121 161 171 / 4%) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgb(121 161 171 / 4%) 40px),
+    var(--page-bg);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.app {
+  background-color: var(--page-bg);
+  background-image:
+    url("/industrial-facility-blueprint.svg"),
+    radial-gradient(ellipse at 72% 8%, rgb(49 133 145 / 12%), transparent 34rem),
+    radial-gradient(ellipse at 8% 82%, rgb(179 120 47 / 7%), transparent 28rem),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgb(121 161 171 / 4%) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgb(121 161 171 / 4%) 40px);
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
+  background-position: right 4% center, center, center, center, center;
+  background-size: min(1050px, 78vw) auto, auto, auto, 40px 40px, 40px 40px;
+  color: var(--text);
+}
+
+.sidebar {
+  border-right-color: #293a42;
+  background:
+    linear-gradient(180deg, rgb(112 203 211 / 4%), transparent 32%),
+    #0d171c;
+}
+
+.brand-icon {
+  border-color: #31525a;
+  background: #172a30;
+  color: var(--blue);
+}
+
+.brand p,
+.sidebar-footer {
+  color: #9aadb2;
+}
+
+.sidebar-section-label,
+.eyebrow {
+  color: #86a0a8;
+}
+
+.sidebar .nav-item {
+  color: #b6c5c9;
+}
+
+.sidebar .nav-item:hover,
+.sidebar .nav-item.active {
+  border-color: #31505a;
+  background: #192b31;
+  color: #f0f8f8;
+}
+
+.sidebar .nav-item.active {
+  box-shadow: inset 2px 0 #70cbd3;
+}
+
+.main {
+  background: transparent;
+}
+
+.topbar {
+  border-bottom-color: var(--border);
+}
+
+.topbar h1,
+.page-heading h1,
+.maintenance-page-heading h1,
+.dashboard-stat h2,
+.panel-heading h2,
+.register-card h1 {
+  color: var(--text);
+  font-family: inherit;
+}
+
+.dashboard-welcome {
+  border-color: #31505a;
+  background-color: #132128;
+  background-image:
+    linear-gradient(rgb(112 203 211 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(112 203 211 / 5%) 1px, transparent 1px),
+    radial-gradient(ellipse at 82% 50%, rgb(63 158 169 / 17%), transparent 23rem),
+    linear-gradient(115deg, #182a31, #111b21 72%);
+  background-size: 34px 34px, 34px 34px, 100% 100%, 100% 100%;
+}
+
+.dashboard-welcome .eyebrow {
+  color: #8ed3d7;
+}
+
+.dashboard-welcome > div:first-child > p:last-child {
+  color: #bdcbd0;
+}
+
+.welcome-symbol {
+  border-color: rgb(112 203 211 / 25%);
+  background: rgb(112 203 211 / 8%);
+  color: #8ed3d7;
+}
+
+.approval-notice {
+  border-color: #6b542d;
+  background: #282116;
+  color: #ebcb8a;
+}
+
+.dashboard-stat,
+.dashboard-panel,
+.content-card,
+.manuals-selector,
+.manuals-list,
+.register-card,
+.maintenance-summary-card,
+.maintenance-card,
+.hierarchy-form,
+.hierarchy-overview,
+.admin-users-page .form-card,
+.admin-users-page .data-card,
+.machine-edit-form,
+.machine-directory,
+.answer-panel {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 16%);
+}
+
+.dashboard-stat > p,
+.dashboard-stat > span,
+.dashboard-stat small,
+.panel-heading p,
+.activity-empty p,
+.dashboard-stat .muted,
+.manuals-description,
+.manuals-list-heading span,
+.manuals-file-info p,
+.manual-file-info p,
+.maintenance-subtitle,
+.maintenance-page-heading p:last-child,
+.maintenance-summary-card p,
+.maintenance-section-heading p,
+.maintenance-record p,
+.maintenance-record small,
+.hierarchy-empty,
+.register-description,
+.page-description,
+.maintenance-note,
+.disclaimer {
+  color: var(--muted);
+}
+
+.stat-icon,
+.machines-icon,
+.tickets-icon,
+.repair-icon,
+.resolved-icon,
+.quick-action-icon,
+.empty-icon,
+.upload-symbol {
+  border: 1px solid #30434b;
+  background: #1a2a30;
+  color: #8ed3d7;
+}
+
+.tickets-icon,
+.problem-status.open,
+.verification.unverified {
+  border-color: #62502e;
+  background: #2b2418;
+  color: #e5bd70;
+}
+
+.repair-icon {
+  color: #c3b4e8;
+}
+
+.resolved-icon,
+.problem-status.closed,
+.verification.verified {
+  border-color: #315b4d;
+  background: #172a24;
+  color: #8fd1ad;
+}
+
+.panel-heading h2,
+.activity-empty h3,
+.quick-action strong,
+.manual-file-info h3,
+.maintenance-record strong,
+.hierarchy-form h2,
+.hierarchy-overview h2,
+.organization-flow-node,
+.facility-flow-node,
+.hierarchy-node {
+  color: var(--text);
+}
+
+.activity-empty,
+.manuals-empty,
+.maintenance-empty {
+  border-color: #33464e;
+  color: var(--muted);
+}
+
+.secondary-button,
+.quick-action,
+.page-content .page-back-button,
+.maintenance-register-button,
+.manual-open-button,
+.maintenance-record-actions button,
+.maintenance-close-button {
+  border-color: #354951;
+  background: #18262c;
+  color: #c5d3d6;
+}
+
+.secondary-button:hover,
+.page-content .page-back-button:hover,
+.maintenance-register-button:hover,
+.manual-open-button:hover,
+.maintenance-close-button:hover:not(:disabled) {
+  border-color: #4a6971;
+  background: #203239;
+  color: #f1f7f7;
+}
+
+.quick-action {
+  border-color: var(--border);
+}
+
+.quick-action strong:hover,
+.quick-action:hover strong,
+.back-button:hover {
+  color: var(--blue);
+}
+
+.quick-action small,
+.action-arrow,
+.manuals-list-heading span,
+.manuals-selector label,
+.manuals-selector select,
+.organization-flow-node > span,
+.facility-flow-node > span,
+.hierarchy-node-type {
+  color: var(--muted);
+}
+
+.answer-panel {
+  border-color: #31505a;
+  background: #14232a;
+}
+
+.answer-panel h3,
+.answer-panel h4,
+.answer-text,
+.answer-panel li {
+  color: #d7e4e6;
+}
+
+.answer-text.answer-streaming::after {
+  background: var(--blue);
+}
+
+.error-message,
+.register-error {
+  border-color: #673c3b;
+  background: #2c1c1c;
+  color: #f0aaa3;
+}
+
+.app-footer {
+  border-color: var(--border);
+  color: #84989f;
+}
+
+.auth-page {
+  color: var(--text);
+  background-color: var(--page-bg);
+  background-image:
+    url("/industrial-facility-blueprint.svg"),
+    radial-gradient(ellipse at 50% 18%, rgb(49 133 145 / 16%), transparent 32rem),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgb(121 161 171 / 5%) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgb(121 161 171 / 5%) 40px);
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
+  background-position: left center, center, center, center;
+  background-size: min(1050px, 100vw) auto, auto, 40px 40px, 40px 40px;
+}
+
+.auth-card {
+  border-color: #30434b;
+  background: linear-gradient(145deg, #16242a, #111b21);
+  box-shadow: 0 24px 70px rgb(0 0 0 / 38%);
+}
+
+.auth-brand > span,
+.auth-submit {
+  background: #237b84;
+}
+
+.auth-brand p {
+  color: var(--muted);
+}
+
+.auth-form label {
+  color: #c7d5d8;
+}
+
+.auth-form input,
+.app input:not([type="checkbox"]):not([type="file"]),
+.app select,
+.app textarea,
+.admin-users-page input,
+.machine-edit-form input,
+.machine-edit-form select,
+.machine-edit-form textarea,
+.hierarchy-form input,
+.hierarchy-form select,
+.hierarchy-form textarea,
+.form-grid input,
+.form-grid select {
+  border-color: #354951;
+  background: #0c151a;
+  color: #e5eff1;
+}
+
+.auth-form input::placeholder,
+.app input::placeholder,
+.app textarea::placeholder {
+  color: #82979e;
+}
+
+.auth-form input:focus,
+.app input:focus,
+.app select:focus,
+.app textarea:focus {
+  border-color: var(--blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(112 203 211 / 15%);
+}
+
+.auth-role-toggle {
+  background: #0e191e;
+}
+
+.auth-role-toggle button {
+  color: #a6b8bd;
+}
+
+.auth-role-toggle button.selected {
+  background: #203239;
+  color: #93dce0;
+  box-shadow: inset 0 0 0 1px #365b63;
+}
+
+.auth-links button,
+.auth-back {
+  color: #86d4da;
+}
+
+.auth-message {
+  color: #8fd1ad;
+}
+
+.auth-error {
+  color: #f0aaa3;
+}
+
+.admin-users-page {
+  color: var(--text);
+}
+
+.admin-users-page .page-header p:last-child,
+.admin-users-page td {
+  color: #c3d0d3;
+}
+
+.admin-users-page button {
+  border-color: #354951;
+  background: #18262c;
+  color: #c5d3d6;
+}
+
+.admin-users-page button:hover {
+  border-color: #4a6971;
+  background: #203239;
+}
+
+.admin-users-page .primary-button {
+  border-color: #237b84;
+  background: #237b84;
+  color: #f5ffff;
+}
+
+.admin-users-page th,
+.admin-users-page td {
+  border-color: var(--border);
+}
+
+.admin-users-page th {
+  color: #90a6ad;
+}
+
+.ask-ai-page .page-heading .eyebrow,
+.ask-ai-page .machine-selection label,
+.ask-ai-page .ask-question-label,
+.ask-ai-page .ask-ai-step-panel > label,
+.ask-ai-page .section-heading h2,
+.ask-ai-page .ask-ai-step-panel h3 {
+  color: #d5e1e3;
+}
+
+.ask-ai-page .ask-page-card,
+.ask-ai-page .content-card {
+  border-color: var(--border);
+  background: var(--surface);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 16%);
+}
+
+.ask-ai-page .section-heading p,
+.ask-ai-page .ask-ai-step-panel > p,
+.ask-ai-page .disclaimer {
+  color: var(--muted);
+}
+
+.ask-ai-page .ai-badge {
+  border-color: #5d4c2b;
+  background: #2a2419;
+  color: #e7c779;
+}
+
+.ask-ai-page .machine-selection select,
+.ask-ai-page textarea,
+.ask-ai-page .ask-ai-step-panel select {
+  border-color: #354951;
+  background: #0c151a;
+  color: #e5eff1;
+}
+
+.ask-ai-page .machine-selection select:focus,
+.ask-ai-page textarea:focus,
+.ask-ai-page .ask-ai-step-panel select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgb(112 203 211 / 15%);
+}
+
+.ask-ai-page .ask-ai-tabs {
+  border-color: var(--border);
+}
+
+.ask-ai-page .ask-ai-tabs button {
+  color: #9fb1b6;
+}
+
+.ask-ai-page .ask-ai-tabs button.active {
+  border-bottom-color: var(--blue);
+  color: #8ed9de;
+}
+
+.ask-ai-page .ask-button,
+.maintenance-submit,
+.register-submit {
+  background: #237b84;
+  color: #f5ffff;
+  box-shadow: none;
+}
+
+.ask-ai-page .ask-button:hover:not(:disabled),
+.maintenance-submit:hover,
+.register-submit:hover:not(:disabled) {
+  background: #2d929b;
+}
+
+.ask-ai-page .thinking-status {
+  color: #8ed9de;
+}
+
+.ask-ai-page .thinking-indicator {
+  border-color: #354951;
+  border-top-color: var(--blue);
+}
+
+.manuals-page,
+.maintenance-page {
+  color: var(--text);
+}
+
+.manuals-page .page-heading,
+.maintenance-page-heading,
+.maintenance-tabs {
+  border-color: var(--border);
+}
+
+.manuals-page > h1,
+.maintenance-header h1 {
+  color: var(--text);
+  font-family: inherit;
+}
+
+.manuals-selector label,
+.maintenance-card form > label,
+.maintenance-form-grid label,
+.maintenance-edit-form label {
+  color: #c7d5d8;
+}
+
+.manuals-selector select {
+  border-color: #354951;
+  background: #0c151a;
+  color: #e5eff1;
+}
+
+.manual-file-icon {
+  border: 1px solid #554148;
+  background: #2a2024;
+  color: #e8a29d;
+}
+
+.manual-item {
+  border-color: var(--border);
+}
+
+.maintenance-header h1,
+.maintenance-summary-card strong,
+.maintenance-section-heading h2 {
+  color: var(--text);
+}
+
+.maintenance-eyebrow,
+.maintenance-summary-card > span {
+  color: #90a6ad;
+}
+
+.maintenance-summary-card:hover,
+.maintenance-summary-card.active {
+  border-color: #4e858b;
+  background: #192a30;
+  box-shadow: 0 0 0 2px rgb(112 203 211 / 12%);
+}
+
+.maintenance-summary-card:focus-visible {
+  outline-color: var(--blue);
+}
+
+.maintenance-tabs {
+  border-bottom-color: var(--border);
+}
+
+.maintenance-tab {
+  color: #9fb1b6;
+}
+
+.maintenance-tab:hover,
+.maintenance-tab.active {
+  color: #8ed9de;
+}
+
+.maintenance-tab.active {
+  border-bottom-color: var(--blue);
+}
+
+.maintenance-card input:not([type="checkbox"]):not([type="file"]),
+.maintenance-card select,
+.maintenance-card textarea {
+  border-color: #354951;
+  background: #0c151a;
+  color: #e5eff1;
+}
+
+.maintenance-card input:focus,
+.maintenance-card select:focus,
+.maintenance-card textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgb(112 203 211 / 15%);
+}
+
+.maintenance-upload {
+  border-color: #45606a;
+  background: #152329;
+  color: #cbd9dc;
+}
+
+.maintenance-upload > span,
+.maintenance-checkbox small,
+.maintenance-edit-form label {
+  color: var(--muted);
+}
+
+.maintenance-checkbox {
+  border-color: var(--border);
+  background: #152127;
+}
+
+.maintenance-checkbox input {
+  accent-color: var(--blue);
+}
+
+.maintenance-record {
+  border-color: var(--border);
+}
+
+.maintenance-record-actions button {
+  color: #c5d3d6;
+}
+
+.organization-flow-node,
+.facility-flow-node,
+.hierarchy-node,
+.hierarchy-branch {
+  border-color: #354951;
+  background: #152329;
+}
+
+button.organization-flow-node:hover,
+.organization-flow-group.selected .organization-flow-node {
+  border-color: #4e858b;
+  background: #1b3036;
+}
+
+.facility-flow-node::before,
+.facility-flow-card {
+  border-color: #3a5159;
+}
+
+.organization-flow-node > span,
+.facility-flow-node > span,
+.hierarchy-node-type {
+  color: #91a6ac;
+}
+
+.hierarchy-branch h3,
+.organization-flow-toggle {
+  color: #8ed9de;
+}
+
+.hierarchy-tree li {
+  border-left-color: #40565e;
+}
+
+.hierarchy-tree li::before {
+  border-top-color: #40565e;
+}
+
+.hierarchy-machine-list li {
+  border-color: #315b4d;
+  background: #172a24;
+  color: #8fd1ad;
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    background: #0d171c;
+  }
+}

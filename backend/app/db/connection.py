@@ -5,7 +5,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from sqlalchemy import inspect, text
-from sqlalchemy.engine import URL
+from sqlalchemy.engine import URL, make_url
 from sqlalchemy.exc import SQLAlchemyError
 from sqlmodel import SQLModel, Session, create_engine
 
@@ -16,17 +16,21 @@ load_dotenv(REPOSITORY_ROOT / ".env")
 
 logger = logging.getLogger(__name__)
 
-DATABASE_URL = URL.create(
-    drivername="postgresql+pg8000",
-    username=os.getenv("POSTGRES_USER", ""),
-    password=os.getenv("POSTGRES_PASSWORD", ""),
-    host=os.getenv("POSTGRES_HOST", "localhost"),
-    port=int(os.getenv("POSTGRES_PORT", "5432")),
-    database=os.getenv("POSTGRES_DB", ""),
-)
+def _build_database_url(database_url: str) -> URL:
+    url = make_url(database_url)
+    if url.drivername in {"postgres", "postgresql", "postgresql+pg8000"}:
+        return url.set(drivername="postgresql+psycopg")
+    if url.drivername == "postgresql+psycopg":
+        return url
+    raise ValueError("DATABASE_URL must use a PostgreSQL connection.")
+
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not configured")
 
 engine = create_engine(
-    DATABASE_URL,
+    _build_database_url(DATABASE_URL),
     pool_size=5,
     max_overflow=10,
     pool_timeout=30,

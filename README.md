@@ -1,9 +1,10 @@
 # Maintenance AI
 
-Maintenance AI is a local facility-maintenance application built with FastAPI,
-PostgreSQL/pgvector, React, and Ollama. It stores organizations, facilities,
-shared machine records, maintenance history, and manuals; its assistant answers
-questions using hybrid retrieval over maintenance and manual content.
+Maintenance AI is a facility-maintenance application built with FastAPI,
+PostgreSQL/pgvector, React, and the Gemini API. It stores organizations,
+facilities, shared machine records, maintenance history, and manuals; its
+assistant answers questions using hybrid retrieval over maintenance and manual
+content.
 
 ## Architecture
 
@@ -15,7 +16,7 @@ FastAPI routes ── SQLModel ── PostgreSQL + pgvector
     │                                  ▲
     ├── PDF extraction and indexing ───┤
     ├── sentence-transformer embeddings│
-    └── hybrid RAG ── Ollama           │
+    └── hybrid RAG ── Gemini API       │
 ```
 
 Organizations contain facilities. Each facility has independent functional
@@ -28,10 +29,19 @@ record.
 - Python 3.11 or newer
 - Node.js and npm
 - Docker Desktop with Linux containers
-- Ollama and a locally available model
+- A Google Gemini API key
+- Internet access from the backend to the Gemini API
 
-Create `.env` from `.env.example`, then configure PostgreSQL and Ollama. Keep
-`.env` private; it is ignored by Git.
+Configure PostgreSQL, SMTP, and Gemini in the root `.env` file. Add your Gemini
+API key and (optionally) the model to use:
+
+```dotenv
+GEMINI_API_KEY=your-google-ai-studio-api-key
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+Create an API key in Google AI Studio. Keep `.env` private; never commit or
+share the key. `GEMINI_MODEL` defaults to `gemini-2.5-flash`.
 
 Start the pgvector database from the project root:
 
@@ -136,8 +146,9 @@ PDF pages and maintenance entries are chunked and embedded with
 the embeddings, generated English full-text vectors, HNSW vector index, and GIN
 full-text index. Retrieval filters chunks to the selected machine, functional
 system subtree, physical location subtree, or facility; vector and full-text
-results are merged with Reciprocal Rank Fusion. Ollama generates the answer as
-a token stream; sources are sent after the answer.
+results are merged with Reciprocal Rank Fusion. Gemini generates the answer as
+a token stream; sources are sent after the answer. The API key remains on the
+backend and is sent to Google in the `x-goog-api-key` request header.
 
 ## Database initialization
 
