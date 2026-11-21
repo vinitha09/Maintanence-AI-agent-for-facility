@@ -33,8 +33,7 @@ allowed_origins = [
     origin.strip()
     for origin in os.getenv(
         "CORS_ALLOWED_ORIGINS",
-        "https://maintanence-ai-agent-for-facility.pages.dev",
-        "http://localhost:5173,http://127.0.0.1:5173",
+        "https://maintanence-ai-agent-for-facility.pages.dev"
     ).split(",")
     if origin.strip()
 ]
