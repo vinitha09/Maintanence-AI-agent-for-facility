@@ -57,27 +57,34 @@ COOKIE_NAME = SESSION_COOKIE_NAME
 FRONTEND_URL = os.getenv("FRONTEND_URL", "https://maintanence-ai-agent-for-facility.pages.dev").rstrip("/")
 
 
+def _session_cookie_security() -> tuple[bool, str]:
+    secure = os.getenv("COOKIE_SECURE", "false").lower() == "true"
+    return secure, "none" if secure else "lax"
+
+
 def _set_session_cookie(response: Response, user: User) -> None:
     if user.id is None:
         raise RuntimeError("Cannot create a session for a user without an ID.")
     token = create_access_token(user.id, user.role, user.auth_version)
+    secure, same_site = _session_cookie_security()
     response.set_cookie(
         key=COOKIE_NAME,
         value=token,
         max_age=int(ACCESS_TOKEN_LIFETIME.total_seconds()),
         httponly=True,
-        secure=os.getenv("COOKIE_SECURE", "false").lower() == "true",
-        samesite="lax",
+        secure=secure,
+        samesite=same_site,
         path="/",
     )
 
 
 def _clear_session_cookie(response: Response) -> None:
+    secure, same_site = _session_cookie_security()
     response.delete_cookie(
         key=COOKIE_NAME,
         httponly=True,
-        secure=os.getenv("COOKIE_SECURE", "false").lower() == "true",
-        samesite="lax",
+        secure=secure,
+        samesite=same_site,
         path="/",
     )
 
