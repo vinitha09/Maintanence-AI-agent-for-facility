@@ -25,7 +25,12 @@ def _build_database_url(database_url: str) -> URL:
     raise ValueError("DATABASE_URL must use a PostgreSQL connection.")
 
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+# Prefer Neon when configured; otherwise use the default DATABASE_URL
+DATABASE_URL = (
+    os.getenv("NEON_DATABASE_URL")
+    or os.getenv("DATABASE_URL")
+)
+
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL is not configured")
 
